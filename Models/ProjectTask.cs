@@ -17,6 +17,5 @@ namespace ProjectManagementApp.Models
         public bool IsCompleted { get; set; }
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
-        public Project Project { get; set; }
     }
 }

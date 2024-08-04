@@ -26,7 +26,7 @@ namespace ProjectManagementApp.Data
 
             builder.Entity<Project>()
                 .HasMany(p => p.Tasks)
-                .WithOne(t => t.Project)
+                .WithOne()
                 .HasForeignKey(t => t.ProjectId);
 
         }

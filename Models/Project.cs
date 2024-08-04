@@ -14,7 +14,7 @@ namespace ProjectManagementApp.Models
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<ProjectTask> Tasks { get; set; }
+        public List<ProjectTask> Tasks { get; set; } = new List<ProjectTask>();
     }
 }
 
