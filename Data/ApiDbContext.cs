@@ -23,11 +23,11 @@ namespace ProjectManagementApp.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            //define relation one to many
             builder.Entity<Project>()
-                .HasMany(p => p.Tasks)
-                .WithOne()
-                .HasForeignKey(t => t.ProjectId);
+                .HasMany(p => p.Tasks) //A project has many tasks
+                .WithOne() //Each task is related to one project
+                .HasForeignKey(t => t.ProjectId); //The foreign key is 'ProjectId' in the ProjectTask entity
 
         }
 

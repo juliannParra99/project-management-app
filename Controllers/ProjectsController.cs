@@ -52,18 +52,30 @@ namespace ProjectManagementApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Project>> PostProject(Project project)
+        public async Task<ActionResult<Project>> PostProject(ProjectDto projectDto)
         {
 
+            // Check if the DTO is valid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Projects.Add(project);
+            // Create a new Project entity from the DTO
+            var project = new Project
+            {
+                Name = projectDto.Name,
+                Description = projectDto.Description,
+                StartDate = projectDto.StartDate,
+                EndDate = projectDto.EndDate
+            };
 
+            // Add the new project to the database
+            _context.Projects.Add(project);
             await _context.SaveChangesAsync();
-            return Ok(project);
+
+            // Return the newly created project
+            return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
         }
 
         [HttpPut("{id}")]
