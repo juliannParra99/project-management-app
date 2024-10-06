@@ -45,7 +45,7 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
+        ValidateIssuer = false, //or develoment porpouse, atention with this! Or the  access to those routes which require Auth won't work; verirify who emitted the token ; in development would be the localhost
         ValidateAudience = false,
         RequireExpirationTime = false,
         ValidateLifetime = false
