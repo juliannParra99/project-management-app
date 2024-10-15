@@ -14,6 +14,8 @@ namespace ProjectManagementApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //protect all the routes; needed to get the JWT token with role of manager
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "manager")]
     public class ProjectsController : ControllerBase
     {
         private readonly ApiDbContext? _context;
@@ -31,7 +33,6 @@ namespace ProjectManagementApp.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "manager")]
         public async Task<ActionResult<List<Project>>> GetProjects()
         {
 
