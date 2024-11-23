@@ -14,7 +14,7 @@ namespace ProjectManagementApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "manager")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "manager")]
     public class TasksController : ControllerBase
     {
         private readonly ApiDbContext _context;
