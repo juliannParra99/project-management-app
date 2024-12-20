@@ -44,7 +44,7 @@ builder.Services.AddControllers();
 
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfig"));
 
-builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApiDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection")));
 
 // Configures Identity services for user and role management using ASP.NET Core Identity.
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
